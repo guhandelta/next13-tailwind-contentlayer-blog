@@ -1,7 +1,11 @@
 import Image from 'next/image'
 
+
+
 export default function Home() {
   return (
-    <h1 className="text-center font-bold text-3xl text-orange-400 mt-16">Mind of Guha</h1>
+    <main className="flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold text-orange-500 mt-24">Home Page</h1>
+    </main>
   )
 }
