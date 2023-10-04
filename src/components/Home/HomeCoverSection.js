@@ -9,7 +9,6 @@ const HomeCoverSection = ({ blogs }) => {
 
     const sortedBlogs = sortBlogs(blogs);
     const blog = sortedBlogs[2];
-    console.log("blog URL:\t", blog.URL);
 
   return (
     <div className="w-full inline-block font-rh">
