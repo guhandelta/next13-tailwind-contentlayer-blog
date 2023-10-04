@@ -15,14 +15,15 @@ const Blog = defineDocumentType(()=>({
             required: true
         },
         image:{
-            type: 'string',
+            // type: 'string' will return just the URL, type: 'image' allows add dimensions, blur data,....etc
+            type: 'image',
             required: true
         },
         author:{
             type: 'string',
             required: true
         },
-        createdAt:{
+        publishedAt:{
             type: 'date',
             required: true
         },

@@ -1,3 +1,5 @@
 import Header from './Header'
+import HomeCoverSection from './Home/HomeCoverSection'
+import Tag from './Elements/Tag'
 
-export { Header }
+export { Header, HomeCoverSection, Tag }
