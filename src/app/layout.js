@@ -1,8 +1,9 @@
-import { cx } from '@/utils';
+
 import './globals.css'
 import { Inter, Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
-import { Header } from '@/components';
+import { Header } from '../components';
+import { cx } from '../utils';
 
 const inter = Inter({ subsets: ['latin'], display: "swap", variable: "--font-in"});
 
@@ -35,7 +36,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={cx(inter.variable, manrope.variable, anurati.variable, rheaski.variable, "font-rh bg-light dark:bg-dark")}>
+      <body className={cx(inter.variable, manrope.variable, anurati.variable, rheaski.variable, "font-an bg-light dark:bg-dark")}>
         <Header />
         {children}
       </body>
