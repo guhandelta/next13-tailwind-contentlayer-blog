@@ -11,7 +11,7 @@ const Header = () => {
         <Link href="/about" className='mx-2'>About</Link>
         <Link href="/contact" className='mr-2'>Contact</Link>
         <button>
-          <SunIcon className="hover:animate-spin" />
+          <SunIcon className="hover:animate-spin  " />
         </button>
       </nav>
       <div className="flex p-4">
