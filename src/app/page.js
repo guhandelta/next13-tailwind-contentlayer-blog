@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import { allBlogs } from 'contentlayer/generated'
-import { FeaturedPost, HomeCoverSection } from '../components';
+import { FeaturedPost, HomeCoverSection, RecentPost } from '../components';
 
 
 export default function Home() {
@@ -11,6 +11,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center">
       <HomeCoverSection blogs={allBlogs} />
       <FeaturedPost blogs={allBlogs} />
+      <RecentPost blogs={allBlogs} />
     </main>
   )
 }
