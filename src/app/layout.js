@@ -2,7 +2,7 @@
 import './globals.css'
 import { Inter, Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
-import { Header } from '../components';
+import { Footer, Header } from '../components';
 import { cx } from '../utils';
 
 const inter = Inter({ subsets: ['latin'], display: "swap", variable: "--font-in"});
@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
       <body className={cx(inter.variable, manrope.variable, anurati.variable, rheaski.variable, "font-an bg-light dark:bg-dark")}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
