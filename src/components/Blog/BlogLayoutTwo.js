@@ -19,10 +19,10 @@ const BlogLayoutTwo = ({ blog }) => {
         </Link>
 
         <div className="w-full col-span-8">
-            <span className=" uppercase text-accent font-bold text-md">{blog.tags[0]}</span>
+            <span className=" uppercase text-purple-800 font-bold text-md">{blog.tags[0]}</span>
             <Link href={blog.URL} className='inline-block my-1'>
                 <h2 className='font-semibold capitalize text-lg'>
-                    <span className="bg-gradient-to-r from-accent to-accent bg-[length:0px_6px] group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 text-xl">
+                    <span className="bg-gradient-to-r from-purple-400 to-purple-500 bg-[length:0px_6px] group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 text-xl">
                         {blog.title}
                     </span>
                 </h2>

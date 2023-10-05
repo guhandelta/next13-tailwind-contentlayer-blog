@@ -6,13 +6,13 @@ import Link from 'next/link';
 const RecentPost = ({ blogs }) => {
 
     const sortedBlogs = sortBlogs(blogs);
-    sortedBlogs.slice(5,11).forEach(e => console.log("\nTitle:",e.publishedAt,"\n"));
+    // sortedBlogs.slice(5,11).forEach(e => console.log("\nTitle:",e._raw.flattenedPath,"\n"));
 
   return (
     <section className="w-full mt-32 px-32 flex flex-col items-center justify-center">
     <div className="w-full flex justify-between">
       <h2 className="inline-block font-bold text-4xl capitalize">Recent Posts</h2>
-      <Link href="/categories/all" className='text-accent inline-block font-medium hover:underline underline-offset-2 text-lg'>
+      <Link href="/categories/all" className='text-purple-600 inline-block font-medium hover:underline underline-offset-2 text-lg'>
         View all...
       </Link>
     </div>
