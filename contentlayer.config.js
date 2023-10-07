@@ -5,6 +5,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import GithubSlugger from 'github-slugger'
 
 // defineDocumenType => defines the schema of the top-level document type, often referred to as model
 const Blog = defineDocumentType(()=>({
@@ -57,6 +58,36 @@ const Blog = defineDocumentType(()=>({
         readingTime:{
             type: 'json',
             resolve: doc => readingTime(doc.body.raw),
+        },
+        toc:{
+            type: 'json',
+            resolve: async (doc) =>  {
+                    /*
+                        \n => matches the new line
+                        () => named capturing group, which matches the # prepended on the line to mention the type of <h*> by the number of #
+                        ? => makes a part of a pattern optional, meaning it may occur zero times or one time. It is added here as it not possible for all elements that are caught to be a h1-6 elements.
+                        . => matches any character expect the new line
+                        + => matches 1 or many characters
+                        \s => matches 1 or more white space characters
+
+                    */
+                const regex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+                // post.body.raw.matchAll(regex) => returns a RegExp String Iterator, Array.from(...) -> to create an array out of the iterator, to map around. The initial items in the array would be the contents extracted using the reegex, the next erty would be groups, which holds 2 keys, flag, and content
+
+                const slugger = new GithubSlugger();
+                const headings = Array.from(doc.body.raw.matchAll(regex)).map(({ groups }) =>{
+                    const flag = groups.flag;
+                    const content = groups.content;
+
+                    return{
+                        level: flag?.length == 1 ? "one" : flag?.length == 2 ? "two" : "three",
+                        text: content,
+                        slug: content ? slugger.slug(content) : undefined,
+                    };
+                });
+
+                return headings;
+            }
         },
     },
 }));

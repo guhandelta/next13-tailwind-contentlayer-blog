@@ -6,9 +6,8 @@ import { BlogDetails, RenderMDX } from "@/src/components/Blog"
 
 export default function BlogPage({ params }) {
 
-    
-
     const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug)
+    console.log("Blog from blog/pages:\t", blog);
 
     return <article className="">
             <div className="m-8 text-center relative w-full h-[70vh] bg-black">
@@ -32,7 +31,38 @@ export default function BlogPage({ params }) {
             <BlogDetails blog={blog} slug={params.slug} />
 
             <div className="grid grid-cols-12 gap-16 mt-8 px-10">
-                <div className="col-span-4">Tic</div>
+                <div className="col-span-4">
+                    <details className="border-[1px] border-solid border-black text-black rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto">
+                        <summary className="text-lg font-semibold capitalize cursor-pointer">Page Sections</summary>
+                        <ul className="mt-4 font-in text-base">
+                            {
+                                blog?.toc?.map(({ slug, level, text }) => {
+
+                                    return(
+                                        <li key={slug} className="py-1">
+                                            <a 
+                                                href="#"
+                                                data-level={level}
+                                                className="data-[level=two]:pl-0 data-[level=two]:pt-2 
+                                                data-[level=two]:border-t border-solid border-black/30
+                                                
+                                                data-[level=three]:pl-6 flex items-center justify-start
+                                                "
+                                            >
+                                                { level === "three" ? 
+                                                    <span className="flex w-1 h-1 mr-1 rounded-full bg-black">&nbsp;</span>
+                                                    :
+                                                    null
+                                                }
+                                                <span className="font-in hover:underline">{text}</span>
+                                            </a>
+                                        </li> 
+                                    )
+                                })
+                            }
+                        </ul>
+                    </details>
+                </div>
                 <RenderMDX blog={blog} />
             </div>
         </article>
