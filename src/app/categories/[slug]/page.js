@@ -1,6 +1,28 @@
 import { allBlogs } from "@/.contentlayer/generated";
 import { BlogLayoutThree, Categories } from "@/src/components/Blog";
-import { slug } from "github-slugger";
+import GithubSlugger, { slug } from "github-slugger";
+
+const slugger = new GithubSlugger();
+
+// Generate custom tags from static content at build time, rather than on-demand
+export async function generateStaticParams() {
+    const categories = [];
+    const paths = [{ slug: "all" }];
+
+    allBlogs.map((blog) => { 
+        if(blog.isPublished){
+            blog.tags.map(tag =>{
+                let slugiffiedTag = slugger.slug(tag);
+                if(!categories.includes(slugiffiedTag)){
+                    categories.push(slugiffiedTag);
+                    paths.push({slug: slugiffiedTag})
+                }
+            })
+        }
+    });
+
+    return paths;
+}
 
 
 const CategoryPage = ({ params }) => {

@@ -3,6 +3,10 @@ import { Tag } from "@/src/components"
 import { allBlogs } from "@/.contentlayer/generated"
 import { BlogDetails, RenderMDX } from "@/src/components/Blog"
 
+// Generate custom tags from static content at build time, rather than on-demand
+export async function generateStaticParams() {
+    return allBlogs.map(blog => ({ slug: blog._raw.flattenedPath }));
+}
 
 export default function BlogPage({ params }) {
 
