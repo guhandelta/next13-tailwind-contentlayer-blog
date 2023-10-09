@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Tag from '../Elements/Tag'
+import { slug } from 'github-slugger'
 
 const BlogLayoutOne = ({ blog }) => {
 
@@ -18,11 +19,11 @@ const BlogLayoutOne = ({ blog }) => {
                 className='w-full h-full object-center object-cover rounded-3xl group-hover:scale-105 translate-all ease duration-300'
             />
             <div className="w-full absolute bottom-0 p-10 z-20">
-                <Tag link={`categories/${blog.tags[0]}`} name={blog.tags[0]} className="mb-4 group-hover:text-black px-6 text-sm py-2 !border" />
+                <Tag link={`categories/${slug(blog.tags[0])}`} name={blog.tags[0]} className="mb-4 text-white bg-black px-6 text-sm py-2 !border" />
                 <Link href={blog.URL} className='mt-6'>
                     <h1 className=' font-bold capitalize text-4xl mx-4'>
-                        <span className="bg-gradient-to-r from-purple-200 to-purple-200 bg-[length:0px_6px] group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 ">
-                            <p className="hover:text-white ease duration-500 scale-105">{blog.title}</p>
+                        <span className="bg-gradient-to-r from-purple-600 to-purple-600 bg-[length:0px_6px] group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 ">
+                            <p className="group-hover:text-black text-white ease duration-500 scale-105">{blog.title}</p>
                         </span>
                     </h1>
                 </Link>

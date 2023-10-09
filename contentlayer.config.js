@@ -72,7 +72,7 @@ const Blog = defineDocumentType(()=>({
 
                     */
                 const regex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
-                // post.body.raw.matchAll(regex) => returns a RegExp String Iterator, Array.from(...) -> to create an array out of the iterator, to map around. The initial items in the array would be the contents extracted using the reegex, the next erty would be groups, which holds 2 keys, flag, and content
+                // post.body.raw.matchAll(regex) => returns a RegExp String Iterator, Array.from(...) -> to create an array out of the iterator, to map around. The initial items in the array would be the contents extracted using the regex, the next erty would be groups, which holds 2 keys, flag, and content
 
                 const slugger = new GithubSlugger();
                 const headings = Array.from(doc.body.raw.matchAll(regex)).map(({ groups }) =>{

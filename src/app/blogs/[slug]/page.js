@@ -7,7 +7,6 @@ import { BlogDetails, RenderMDX } from "@/src/components/Blog"
 export default function BlogPage({ params }) {
 
     const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug)
-    console.log("Blog from blog/pages:\t", blog);
 
     return <article className="">
             <div className="m-8 text-center relative w-full h-[70vh] bg-black">
@@ -37,11 +36,11 @@ export default function BlogPage({ params }) {
                         <ul className="mt-4 font-in text-base">
                             {
                                 blog?.toc?.map(({ slug, level, text }) => {
-
+                                        
                                     return(
                                         <li key={slug} className="py-1">
                                             <a 
-                                                href="#"
+                                                href={`#${slug}`}
                                                 data-level={level}
                                                 className="data-[level=two]:pl-0 data-[level=two]:pt-2 
                                                 data-[level=two]:border-t border-solid border-black/30
