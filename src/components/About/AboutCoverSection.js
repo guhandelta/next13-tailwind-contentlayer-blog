@@ -1,12 +1,24 @@
 import React from 'react'
-import Skills from './Skills'
+import Image from 'next/image'
+
+import AboutImage from '@/public/character.png'
 
 const AboutCoverSection = () => {
-  return (
-    <div>
-        <Skills />
-    </div>
-  )
+    return (
+        <section className="w-full h-[75vh] border-b-2 border-solid border-black flex flex-row items-center justify-center text-black">
+            <div className="w-1/2 h-full border-r-2 border-solid border-black flex justify-center">
+                <Image className='w-full h-full object-contain object-center' src={AboutImage} />
+            </div>
+            <div className="w-1/2 flex flex-col text-left items-start justify-center px-10">
+                <h2 className="font-bold capitalize text-6xl">
+                    Dream Big, Work Hard, Achieve More!
+                </h2>
+                <p className="font-medium capitalize mt-6 text-base">
+                    This Mantra Drives My Work As A Passionate Freelancer. I Blend Innovative Technology With Timeless Design For Captivating Digital Experiences. Inspired By Nature And Literature, I'm A Perpetual Learner Embracing Challenges. With Each Project, I Aim To Leave A Lasting Impact—One Pixel At A Time.
+                </p>
+            </div>
+        </section>
+    )
 }
 
 export default AboutCoverSection
