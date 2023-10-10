@@ -37,7 +37,8 @@ export default function ContactForm() {
 
         <input 
             className='mt-8 font-medium inline-block capitalize text-xl px-8 py-3 border-2 border-solid border-black rounded cursor-pointer'
-            type="Send Request" 
+            type="submit"
+            value="Send Request" 
             // onSubmit={}
         />
     </form>
