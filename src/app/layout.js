@@ -4,6 +4,7 @@ import { Inter, Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Footer, Header } from '../components';
 import { cx } from '../utils';
+import siteMetadata from '../utils/siteMetaData';
 
 const inter = Inter({ subsets: ['latin'], display: "swap", variable: "--font-in"});
 
@@ -17,7 +18,7 @@ const anurati = localFont({
     }
   ],
   variable: '--font-anurati'
-})
+});
 const rheaski = localFont({
   src: [
     {
@@ -26,11 +27,47 @@ const rheaski = localFont({
     }
   ],
   variable: '--font-rheaski'
-})
+});
 
 export const metadata = {
-  title: 'Mind of Guha',
-  description: 'A responsive blog application made using NextJS 13 & TailwindCSS, with ContentLayer to manage the blog\'s content and media',
+
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    template: `$s | ${siteMetadata.title}`, // title passed in + site title
+    default: siteMetadata.title // A default is always requried when creating a template
+  },
+  // Helps the crawlers to 
+  description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.title,
+    images: [
+      siteMetadata.socialBanner
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true, // true will allow the website to be indexed by the search engines
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter:{
+    card:'summary_large_image',
+    title: siteMetadata.title,
+    images: [
+      siteMetadata.socialBanner
+    ],
+  },
 }
 
 export default function RootLayout({ children }) {

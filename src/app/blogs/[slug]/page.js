@@ -2,15 +2,59 @@ import Image from "next/image"
 import { Tag } from "@/src/components"
 import { allBlogs } from "@/.contentlayer/generated"
 import { BlogDetails, RenderMDX } from "@/src/components/Blog"
+import siteMetadata from "@/project_files/siteMetaData";
 
 // Generate custom tags from static content at build time, rather than on-demand
 export async function generateStaticParams() {
     return allBlogs.map(blog => ({ slug: blog._raw.flattenedPath }));
 }
 
+export async function generateMetadata({ params }) {
+    // Fetch teh data of the individual blog
+    const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug);
+    if(!blog) return;
+
+    const publishedAt = new Date(blog.publishedAt).toISOString();
+    const modifiedAt = new Date(blog.updatedAt || blog.publishedAt).toISOString();
+
+    let imageList = [ siteMetadata.socialBanner ];
+    if(blog.image){
+        imageList = typeof blog.image.filePath === "string" ?
+                    [siteMetadata.siteUrl + blog.image.filePath.replace("../public","")]
+                    : blog.image
+    }
+    const ogImages = imageList.map(img => {
+        return { url: img.includes("http") ? img : siteMetadata.siteUrl+img }
+    });
+    const authors = blog?.author ? [blog.author] : siteMetadata.author;
+
+    return {
+        title: blog.title,
+        description: blog.description,
+        openGraph: {
+            title: blog.title,
+            description: blog.description,
+            url: siteMetadata.siteUrl + blog.URL,
+            siteName: siteMetadata.title,
+            locale: 'en_US',
+            type: 'article',
+            publishedTime: publishedAt,
+            modifiedTime: modifiedAt,
+            images: ogImages,
+            authors: authors.length > 0 ? authors : [siteMetadata.author],
+        },
+        twitter:{
+            card:'summary_large_image',
+            description: blog.description,
+            title: blog.title,
+            images: ogImages,
+        },
+    }
+}
+
 export default function BlogPage({ params }) {
 
-    const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug)
+    const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug);
 
     return <article className="">
             <div className="m-8 text-center relative w-full h-[70vh] bg-black">

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Logo from './Logo'
 import { GitHubIcon, LinkedInIcon, MoonIcon, SunIcon, TwitterIcon } from '../Icon'
+import siteMetadata from '@/src/utils/siteMetaData'
 
 const Header = () => {
   return (
@@ -15,13 +16,13 @@ const Header = () => {
         </button>
       </nav>
       <div className="flex p-4">
-        <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://linkedin.com/in/guhaprasaanthnandagopal">
+        <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.linkedin}>
           <LinkedInIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
-        <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://github.com/guhandelta">
+        <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.github}>
           <GitHubIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
-        <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://twitter.com/guhandelta">
+        <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.twitter}>
           <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>

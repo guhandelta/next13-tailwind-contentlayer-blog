@@ -1,6 +1,12 @@
 import LottieAnimation from '@/src/components/Contact/LottieAnimation'
 import React from 'react'
 import ContactForm from './ContactForm'
+import siteMetadata from '@/src/utils/siteMetaData';
+
+const metadata = {
+  title: "Contact Me",
+  description: `Contact me through this form or reach out to me at ${siteMetadata.email}`
+};
 
 const ContactPage = () => {
   return (

@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { GitHubIcon, LinkedInIcon, MoonIcon, SunIcon, TwitterIcon } from '../Icon'
 import Link from 'next/link';
+import siteMetadata from '@/src/utils/siteMetaData';
 
 const Footer = () => {
 
@@ -36,14 +37,14 @@ const Footer = () => {
             </form>
 
             <div className="flex items-center mt-8">
-                <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://linkedin.com/in/guhaprasaanthnandagopal">
-                <LinkedInIcon className="hover:scale-125 transition-all ease duration-200" />
+                <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.linkedin}>
+                    <LinkedInIcon className="hover:scale-125 transition-all ease duration-200" />
                 </a>
-                <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://github.com/guhandelta">
-                <GitHubIcon className="hover:scale-125 transition-all ease duration-200" />
+                <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.github}>
+                    <GitHubIcon className="hover:scale-125 transition-all ease duration-200" />
                 </a>
-                <a target='_blank' className='inline-block m-6 h-6 mr-4' href="https://twitter.com/guhandelta">
-                <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
+                <a target='_blank' className='inline-block m-6 h-6 mr-4' href={siteMetadata.twitter}>
+                    <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
                 </a>
             </div>
 

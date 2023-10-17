@@ -24,6 +24,14 @@ export async function generateStaticParams() {
     return paths;
 }
 
+export async function generateMetadata({ params }) {
+
+    return {
+        title: `${params.slug.replaceAll("-"," ")} Blogs`,
+        description: `Learn more about ${params.slug} through the blogs`,
+    }
+}
+
 
 const CategoryPage = ({ params }) => {
     // filter the blog as per the params.slug crete the array for all the categories
@@ -41,22 +49,22 @@ const CategoryPage = ({ params }) => {
         })
     });
 
-  return <article className=" mt-12 flex flex-col text-black">
-    <div className=" px-32 flex flex-col">
-        <h1 className="mt-6 font-semibold text-5xl">
-            #{params.slug}
-        </h1>
-        <span className="mt-2 inline-block">Discover more categories</span>
-    </div>
-    <Categories categories={allCategories} currentSlug={params.slug} />
-    <div className="grid grid-cols-3 grid-rows-2 gap-16 mx-24 px-32">
-        {blogs.map((blog, index)=>(
-            <article key={index} className="col-span-1 row-span-1 relative">
-                <BlogLayoutThree blog={blog} />
-            </article>
-        ))}
-    </div>
-  </article>
+    return <article className=" mt-12 flex flex-col text-black">
+            <div className=" px-32 flex flex-col">
+                <h1 className="mt-6 font-semibold text-5xl">
+                    #{params.slug}
+                </h1>
+                <span className="mt-2 inline-block">Discover more categories</span>
+            </div>
+            <Categories categories={allCategories} currentSlug={params.slug} />
+            <div className="grid grid-cols-3 grid-rows-2 gap-16 mx-24 px-32">
+                {blogs.map((blog, index)=>(
+                    <article key={index} className="col-span-1 row-span-1 relative">
+                        <BlogLayoutThree blog={blog} />
+                    </article>
+                ))}
+            </div>
+        </article>
 }
 
 export default CategoryPage

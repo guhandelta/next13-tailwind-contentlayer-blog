@@ -3,6 +3,12 @@ import Skills from '@/src/components/About/Skills'
 import Link from 'next/link'
 import React from 'react'
 
+
+const metadata = {
+  title: "About Me",
+  description: "Here are some details about myself"
+};
+
 const AboutPage = () => {
   return (
     <>
