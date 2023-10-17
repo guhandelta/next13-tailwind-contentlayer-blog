@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Tag } from "@/src/components"
 import { allBlogs } from "@/.contentlayer/generated"
 import { BlogDetails, RenderMDX } from "@/src/components/Blog"
-import siteMetadata from "@/project_files/siteMetaData";
+import siteMetadata from '@/src/utils/siteMetaData'
 
 // Generate custom tags from static content at build time, rather than on-demand
 export async function generateStaticParams() {
