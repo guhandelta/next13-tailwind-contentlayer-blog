@@ -6,11 +6,11 @@ import Link from 'next/link'
 
 const Logo = () => {
   return (
-    <Link href="/" className='flex text-dark items-center'>
+    <Link href="/" className='flex text-dark items-center dark:text-light'>
       <div className="w-16 rounded-full overflow-hidden border border-solid border-dark mr-2">
         <Image src={ProfileImg} alt="Guha" className="w-full h-auto rounded-full" />
       </div>
-      <span className='font-bold text-xl text-orange-500'>Mind of Guha</span>
+      <span className='font-bold dark:font-semibold text-xl text-orange-500'>Mind of Guha</span>
     </Link>
   )
 }

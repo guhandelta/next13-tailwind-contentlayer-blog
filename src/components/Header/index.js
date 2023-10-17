@@ -1,9 +1,14 @@
+"use client";
 import Link from 'next/link'
 import Logo from './Logo'
 import { GitHubIcon, LinkedInIcon, MoonIcon, SunIcon, TwitterIcon } from '../Icon'
 import siteMetadata from '@/src/utils/siteMetaData'
+import { useThemeSwitch } from '../Hooks/useThemeSwitch';
 
 const Header = () => {
+
+  const [ mode, setMode ] = useThemeSwitch();
+
   return (
     <header className="w-full px-10 p-4 flex items-center justify-between">
       <Logo />
@@ -11,8 +16,8 @@ const Header = () => {
         <Link href="/" className='mr-2'>Home</Link>
         <Link href="/about" className='mx-2'>About</Link>
         <Link href="/contact" className='mr-2'>Contact</Link>
-        <button>
-          <SunIcon className="hover:animate-spin  " />
+        <button onClick={() => setMode(mode === "light" ? "dark" : "light")}>
+          <SunIcon />
         </button>
       </nav>
       <div className="flex p-4">
